@@ -1,27 +1,32 @@
 var http = require("http");
 var router = require("./router");
-var app = this;
-app.routes = {};
 
-app.start = function() {
+function myApplication(){
+}
+
+myApplication.prototype.listen = function(port) {
     function onRequest(request, response) {
         router.route(request, response);
     }
     server = http.createServer(onRequest);
     console.log("Server started.");
-    server.listen(8888);
-};
+    server.listen(port);
+}
 
-app.close = function(callback) {
+myApplication.prototype.close = function(callback) {
     server.close(callback);
-};
+}
 
-app.get = function get(path, callback){
+myApplication.prototype.get = function get(path, callback){
     router.setRoute(path, callback);
-};
+}
 
-app.post = function post(path, callback){
+myApplication.prototype.post = function post(path, callback){
     router.setRoute();
 }
 
-exports.app = app;
+function createNewApp(){
+    return new myApplication();
+}
+
+module.exports = createNewApp;
