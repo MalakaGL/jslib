@@ -8,4 +8,8 @@ app.get('/', function(req, res){
     res.send('hello world');
 });
 
+app.get('/home', function(req, res){
+    res.sendFile('index.html');
+});
+
 app.listen(3000);

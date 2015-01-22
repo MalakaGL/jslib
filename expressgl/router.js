@@ -5,14 +5,17 @@ var url = require("url"),
 
 var router = this;
 router.routes = {};
+var methods = ['GET', 'POST', 'PUT', 'DELETE'];
 
 router.route = function(request, response) {
-    if(request.url != '/favicon.ico')
-        router.routes[request.url](request, response);
+    if(request.url != '/favicon.ico' && routes[request.url.toLowerCase()])
+        router.routes[request.url.toLowerCase()](request, response);
+    else
+        response.send('404 page not found.')
 }
 
 router.setRoute = function (path, callback){
-    router.routes[path]=callback;
+    router.routes[path.toLowerCase()]=callback;
 }
 
 exports.router = router;

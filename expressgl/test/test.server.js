@@ -9,26 +9,27 @@ describe('Testing server', function () {
         myApp.listen(3000);
     });
 
-    it('Testing get method', function(done){
+    it('Testing get method', function(){
         myApp.get('/',function(req, res){
             res.statusCode=200;
             res.end();
-        });
-        myApp.get('/home',function(req, res){
+        })
+        myApp.post('/post', function(req, res){
             res.statusCode=200;
             res.end();
-        });
-        assert.equal(Object.keys(router.routes).length, 2,'Test for route count.');
-        done();
+        })
     });
 
-    it('Server should return 200', function (done) {
+    it('Server should return 200 for get', function (done) {
         http.get('http://localhost:3000', function (res) {
             assert.equal(200, res.statusCode);
             done();
         });
     });
 
+    it('Server should return 200 for post', function (done) {
+        done();
+    })
     after(function () {
         myApp.close();
     });
