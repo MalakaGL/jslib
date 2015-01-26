@@ -7,14 +7,15 @@ function myApplication(){
 
 myApplication.prototype.listen = function(port){
     function onRequest(request, response){
-        if(methods.indexOf(request['method']) != -1){
+        if(methods.indexOf(request['method'].toLowerCase()) != -1){
             router.route(request, response);
-        } else{
-            response.send('Invalid method found.');
+        }
+        else{
+            console.log('Unknown request method found.');
+            response.send('Unknown request method found.');
         }
     }
     server = http.createServer(onRequest);
-    console.log("Server started.");
     server.listen(port);
 }
 

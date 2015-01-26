@@ -449,3 +449,25 @@ there's no reason to proceed with the current route.
 app.get('/', function (req, res) {
   res.send('GET request to homepage');
 });
+
+
+{ domain: null,
+  _events: { finish: [Function] },
+  _maxListeners: 10,
+  output: [],
+  outputEncodings: [],
+  writable: true,
+  _last: false,
+  chunkedEncoding: true,
+  shouldKeepAlive: true,
+  useChunkedEncodingByDefault: true,
+  sendDate: true,
+  _headerSent: true,
+  _header: 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nDate: Thu, 22 Jan 2015 11:26:59 GMT\r\nConnection: keep-alive\r\nTransfer-Encoding: chunked\r\n\r\n',
+  _hasBody: true,
+  _trailer: '',
+  finished: true,
+  _hangupClose: false,
+  socket: null,
+  connection: null,
+  statusCode: 200 }
